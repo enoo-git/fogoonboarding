@@ -24,6 +24,21 @@
                 placeholder="Enter your username"
                 class="p-3 rounded-lg border border-[#ff3d00] bg-[#080420] focus:outline-none focus:ring-2 focus:ring-[#c3fba5] text-[#c3fba5] transition text-center"
         />
+
+        <!-- Nouveau select pour le rôle -->
+        <select
+                id="role"
+                class="p-3 rounded-lg border border-[#ff3d00] bg-[#080420] focus:outline-none focus:ring-2 focus:ring-[#c3fba5] text-[#c3fba5] transition text-center"
+        >
+            <option value="">Select your role</option>
+            <option value="Smoke">Smoke</option>
+            <option value="Spark">Spark</option>
+            <option value="Ember">Ember</option>
+            <option value="Flame crafter">Flame crafter</option>
+            <option value="Gigablaze">Gigablaze</option>
+            <option value="Eternal blazer">Eternal blazer</option>
+        </select>
+
         <p id="error" class="text-red-500 font-semibold hidden"></p>
         <button
                 type="submit"
@@ -40,23 +55,34 @@
     <div id="ticket" class="relative w-[360px]" style="background-color: #fff;">
         <img src="ticket.png" alt="ticket" class="w-[360px] rounded-lg" />
         <div id="ticketName" class="absolute top-[143px] left-[105px] text-center text-lg font-bold text-black"></div>
+        <div id="ticketRole" class="absolute top-[170px] left-[105px] text-center text-sm font-semibold text-gray-700"></div>
     </div>
 </div>
 
 <script>
     const form = document.getElementById("ticketForm");
     const pseudoInput = document.getElementById("pseudo");
+    const roleSelect = document.getElementById("role");
     const errorEl = document.getElementById("error");
     const generateBtn = document.getElementById("generateBtn");
     const ticketEl = document.getElementById("ticket");
     const ticketName = document.getElementById("ticketName");
+    const ticketRole = document.getElementById("ticketRole");
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const pseudo = pseudoInput.value.trim();
+        const role = roleSelect.value;
+
         if (!pseudo) {
             errorEl.textContent = "Please enter your username!";
+            errorEl.classList.remove("hidden");
+            return;
+        }
+
+        if (!role) {
+            errorEl.textContent = "Please select your role!";
             errorEl.classList.remove("hidden");
             return;
         }
@@ -66,6 +92,7 @@
         generateBtn.textContent = "Generating...";
 
         ticketName.textContent = pseudo;
+        ticketRole.textContent = role;
 
         // petit délai pour maj du DOM
         setTimeout(async () => {
