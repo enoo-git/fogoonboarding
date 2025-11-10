@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mainnet Onboarding</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- html2canvas -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body class="h-screen w-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('bg.png')">
+
+<div class="bg-[#080420]/90 p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
+    <h1 class="text-2xl font-bold mb-2 text-[#ff3d00]">Mainnet onboarding</h1>
+    <p class="text-[#c3fba5] mb-6">Enter your username and generate your Mainnet ticket.</p>
+
+    <form id="ticketForm" class="flex flex-col gap-4">
+        <input
+                id="pseudo"
+                type="text"
+                placeholder="Enter your username"
+                class="p-3 rounded-lg border border-[#ff3d00] bg-[#080420] focus:outline-none focus:ring-2 focus:ring-[#c3fba5] text-[#c3fba5] transition text-center"
+        />
+        <p id="error" class="text-red-500 font-semibold hidden"></p>
+        <button
+                type="submit"
+                id="generateBtn"
+                class="p-3 rounded-lg bg-gradient-to-r from-[#ff3d00] to-[#c3fba5] font-bold text-black hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+            Get my ticket
+        </button>
+    </form>
+</div>
+
+<!-- Zone invisible pour capture -->
+<div class="absolute opacity-0 pointer-events-none">
+    <div id="ticket" class="relative w-[360px]" style="background-color: #fff;">
+        <img src="ticket.png" alt="ticket" class="w-[360px] rounded-lg" />
+        <div id="ticketName" class="absolute top-[143px] left-[105px] text-center text-lg font-bold text-black"></div>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById("ticketForm");
+    const pseudoInput = document.getElementById("pseudo");
+    const errorEl = document.getElementById("error");
+    const generateBtn = document.getElementById("generateBtn");
+    const ticketEl = document.getElementById("ticket");
+    const ticketName = document.getElementById("ticketName");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const pseudo = pseudoInput.value.trim();
+        if (!pseudo) {
+            errorEl.textContent = "Please enter your pseudo!";
+            errorEl.classList.remove("hidden");
+            return;
+        }
+
+        errorEl.classList.add("hidden");
+        generateBtn.disabled = true;
+        generateBtn.textContent = "Generating...";
+
+        ticketName.textContent = pseudo;
+
+        // petit délai pour maj du DOM
+        setTimeout(async () => {
+            const canvas = await html2canvas(ticketEl, {
+                backgroundColor: null,
+                scale: 3
+            });
+
+            const link = document.createElement("a");
+            link.download = `${pseudo}_ticket.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+
+            generateBtn.disabled = false;
+            generateBtn.textContent = "Get my ticket";
+        }, 100);
+    });
+</script>
+</body>
+</html>
