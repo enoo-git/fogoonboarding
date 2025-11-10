@@ -1,0 +1,30 @@
+[00:00:00.686] Server  LOG      ✓ Ready in 496ms
+[00:00:03.592] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.181] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.921] Browser LOG     Nightly: Overwrites EVM default provider
+[00:00:04.921] Browser WARN    Unable to redefine window.ethereum: {}
+[00:00:04.921] Browser ERROR   Failed to assign ethereum proxy: {}
+[00:00:04.921] Browser ERROR   uncaughtError: TypeError: Invalid property descriptor. Cannot both specify accessors and a value or writable attribute, #<Object>
+[00:00:12.218] Server  LOG      ✓ Compiled in 35ms
+[00:00:24.917] Server  LOG      ✓ Compiled in 14ms
+[00:00:28.336] Browser DEBUG   #1 0ms Starting document clone with size 1920x959 scrolled to 0,0
+[00:00:28.336] Browser DEBUG   #1 83ms Document cloned, element located at 780,299.5 with size 360x360 using computed rendering
+[00:00:28.336] Browser DEBUG   #1 83ms Starting DOM parsing
+[00:00:28.336] Browser DEBUG   #1 91ms Added image http://localhost:3000/ticket.png
+[00:00:28.336] Browser DEBUG   #1 98ms Starting renderer for element at 780,299.5 with size 360x360
+[00:00:28.336] Browser DEBUG   #1 98ms Canvas renderer initialized (360x360) with scale 3
+[00:00:28.336] Browser DEBUG   #1 106ms Finished rendering
+[00:00:34.554] Browser DEBUG   #2 0ms Starting document clone with size 1920x959 scrolled to 0,0
+[00:00:34.554] Browser DEBUG   #2 74ms Document cloned, element located at 780,299.5 with size 360x360 using computed rendering
+[00:00:34.554] Browser DEBUG   #2 74ms Starting DOM parsing
+[00:00:34.554] Browser DEBUG   #2 75ms Added image http://localhost:3000/ticket.png
+[00:00:34.554] Browser DEBUG   #2 76ms Starting renderer for element at 780,299.5 with size 360x360
+[00:00:34.554] Browser DEBUG   #2 76ms Canvas renderer initialized (360x360) with scale 3
+[00:00:34.554] Browser DEBUG   #2 80ms Finished rendering
+[00:00:46.016] Browser DEBUG   #3 0ms Starting document clone with size 1920x959 scrolled to 0,0
+[00:00:46.016] Browser DEBUG   #3 75ms Document cloned, element located at 780,299.5 with size 360x360 using computed rendering
+[00:00:46.016] Browser DEBUG   #3 75ms Starting DOM parsing
+[00:00:46.016] Browser DEBUG   #3 77ms Added image http://localhost:3000/ticket.png
+[00:00:46.016] Browser DEBUG   #3 78ms Starting renderer for element at 780,299.5 with size 360x360
+[00:00:46.016] Browser DEBUG   #3 78ms Canvas renderer initialized (360x360) with scale 3
+[00:00:46.016] Browser DEBUG   #3 81ms Finished rendering
